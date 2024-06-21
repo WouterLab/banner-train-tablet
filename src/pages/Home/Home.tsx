@@ -1,12 +1,13 @@
-import { Wrapper } from "./styled";
-import { FormEvent, useState } from "react";
+import { Wrapper, Form, Input, Button } from "./styled";
+import { MouseEvent, useState } from "react";
 
 export function Home() {
   const [name, setName] = useState("");
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: MouseEvent) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/names", {
+
+    await fetch("http://95.163.235.173:3000/names", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,16 +19,16 @@ export function Home() {
 
   return (
     <Wrapper>
-      <form onSubmit={handleSubmit}>
-        <input
+      <Form>
+        <Input
           type='text'
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder='Enter your name'
+          placeholder='Ваше имя'
           required
         />
-        <button type='submit'>Submit</button>
-      </form>
+        <Button onClick={(e) => handleSubmit(e)}>Отправить</Button>
+      </Form>
     </Wrapper>
   );
 }
