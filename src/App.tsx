@@ -1,5 +1,5 @@
-import { Home } from "#pages/Home";
+import { Main } from "#components/Main";
 
 export function App() {
-  return <Home />;
+  return <Main />;
 }
