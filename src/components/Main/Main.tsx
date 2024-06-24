@@ -14,7 +14,7 @@ export function Main() {
   const [selectValue, setSelectValue] = useState(options[0]);
 
   const handleSubmit = async () => {
-    await fetch("https://danilpanov.ru/api/main", {
+    await fetch("https://dapanov.ru/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
