@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Form = styled.div`
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   gap: 20px;
   flex-direction: column;

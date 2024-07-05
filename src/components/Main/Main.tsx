@@ -46,7 +46,6 @@ export function Main() {
 
   const handleSubmit = async () => {
     const data = { name, phrase };
-    console.log(data);
 
     await fetch("https://dapanov.ru/api", {
       method: "POST",
