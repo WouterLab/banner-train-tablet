@@ -1,15 +1,9 @@
 import { Button, ButtonVariant } from "#components/Button";
 import { Input } from "#components/Input";
 import { Wrapper, Form, Title, Select } from "./styled";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 const options = [
-  {
-    label:
-      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
-    value:
-      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
-  },
   { label: "куролесит", value: "куролесит" },
   { label: "колбасит", value: "колбасит" },
   {
@@ -35,6 +29,12 @@ const options = [
   {
     label: "уже на высоте птичьего полета",
     value: "уже на высоте птичьего полета",
+  },
+  {
+    label:
+      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
+    value:
+      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
   },
   { label: "держит курс на курочек", value: "держит курс на курочек" },
 ];
@@ -62,6 +62,10 @@ export function Main() {
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setPhrase(e.target.value);
   };
+
+  useEffect(() => {
+    setPhrase(options[0].label);
+  }, []);
 
   return (
     <Wrapper>
