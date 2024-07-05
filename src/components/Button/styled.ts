@@ -12,6 +12,7 @@ export const Wrapper = styled.button`
   color: ${NEUTRAL[0]};
   background-color: ${NEUTRAL[80]};
   border-radius: 8px;
+  border: none;
 
   &:hover {
     background-color: ${NEUTRAL[90]};
@@ -38,19 +39,18 @@ export const bigStyles = css`
 `;
 
 export const outlineStyles = css`
-  background-color: transparent;
+  background-color: ${NEUTRAL[80]};
   outline: 2px solid ${NEUTRAL[80]};
   outline-offset: -2px;
-  color: ${NEUTRAL[80]};
+  color: ${NEUTRAL[10]};
 
   &:hover {
-    background-color: ${NEUTRAL[80]};
-    color: ${NEUTRAL[10]};
+    background-color: transparent;
   }
 
   &:active {
     background-color: ${NEUTRAL[100]};
-    outline: ${NEUTRAL[100]};
+    outline: ${NEUTRAL[80]};
   }
 `;
 

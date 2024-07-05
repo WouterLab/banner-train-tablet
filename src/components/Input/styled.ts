@@ -5,14 +5,11 @@ import { TEXT1_STYLES, TEXT3_STYLES, TEXT4_STYLES } from "../Typography";
 const { NEUTRAL } = COLORS;
 
 export const Wrapper = styled.input`
-  transition:
-    background-color 0.3s,
-    opacity 0.3s,
-    color 0.3s;
+  transition: background-color 0.3s, opacity 0.3s, color 0.3s;
   ${TEXT3_STYLES};
   height: fit-content;
   color: ${NEUTRAL[0]};
-  background-color: ${NEUTRAL[70]};
+  background-color: ${NEUTRAL[80]};
   border-radius: 8px;
   outline: none;
   border: none;
@@ -26,12 +23,12 @@ export const Wrapper = styled.input`
     color: ${NEUTRAL[0]};
 
     &::placeholder {
-      color: ${NEUTRAL[0]};
+      color: ${NEUTRAL[60]};
     }
   }
 
   &::placeholder {
-    color: ${NEUTRAL[10]};
+    color: ${NEUTRAL[60]};
   }
 `;
 
