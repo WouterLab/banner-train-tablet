@@ -1,6 +1,7 @@
 import { H4_STYLES, TEXT2_STYLES } from "#components/Typography";
 import { styled } from "@linaria/react";
 import { COLORS } from "../Colors";
+import { css } from "@linaria/core";
 const { NEUTRAL } = COLORS;
 
 export const Wrapper = styled.div`
@@ -18,12 +19,35 @@ export const Form = styled.div`
 
   button {
     width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  input {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  select {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
   }
 `;
 
 export const Title = styled.h1`
   ${H4_STYLES};
   color: #fff;
+`;
+
+export const stylesSecondary = css`
+  background-color: ${NEUTRAL[70]};
+  outline: 2px solid ${NEUTRAL[70]};
+
+  &:hover {
+    outline: 2px solid ${NEUTRAL[80]};
+  }
 `;
 
 export const Select = styled.select`

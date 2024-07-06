@@ -1,10 +1,11 @@
 import { Button, ButtonVariant } from "#components/Button";
 import { Input } from "#components/Input";
 import { ListItem } from "#components/ListItem";
-import { Wrapper, Form, Title, Select } from "./styled";
+import { Wrapper, Form, Title, Select, stylesSecondary } from "./styled";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const options = [
+  { label: "Выберите фразу", value: "" },
   { label: "куролесит", value: "куролесит" },
   { label: "колбасит", value: "колбасит" },
   {
@@ -32,41 +33,54 @@ const options = [
     value: "уже на высоте птичьего полета",
   },
   {
-    label: "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
-    value: "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
+    label:
+      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
+    value:
+      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
   },
   { label: "держит курс на курочек", value: "держит курс на курочек" },
 ];
 
 export function Main() {
   const [name, setName] = useState("");
-  const [phrase, setPhrase] = useState(options[0].label);
+  const [phrase, setPhrase] = useState(options[0]);
   const [ownPhrase, setOwnPhrase] = useState(
-    "Your text here                   or on new line                                                                                ",
+    "Дмитрий отлетает                 классно и колбасно                                                                            ",
   );
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(0);
 
   const handleSubmit = async () => {
-    const data = { name, phrase };
+    let data;
+    if (phrase.value === "") {
+      data = { name, phrase: ownPhrase };
+    } else {
+      data = { name, phrase: phrase.value };
+    }
+    console.log(data);
 
-    await fetch("https://dapanov.ru/api", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    setName("");
-    setPhrase("");
-    setStep(0);
+    // await fetch("https://dapanov.ru/api", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+    // setName("");
+    // setPhrase("");
+    // setStep(0);
   };
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setPhrase(e.target.value);
+    if (e.target.value === "Выберите фразу") {
+      setPhrase({ label: e.target.value, value: "" });
+      return;
+    }
+
+    setPhrase({ label: e.target.value, value: e.target.value });
   };
 
   useEffect(() => {
-    setPhrase(options[0].label);
+    setPhrase(options[0]);
   }, []);
 
   const replaceChar = (str: string, index: number, char: string) => {
@@ -77,11 +91,12 @@ export function Main() {
 
   const handlePhraseChange = (value: string, index: number) => {
     const nextInput = document.getElementById(`input-${index + 1}`);
+    const prevInput = document.getElementById(`input-${index - 1}`);
 
     if (value === "") {
       const newValue = replaceChar(ownPhrase, index, " ");
       setOwnPhrase(newValue);
-      nextInput?.focus();
+      prevInput?.focus();
       return;
     }
     if (value.startsWith(" ")) {
@@ -101,19 +116,17 @@ export function Main() {
       <Form>
         {step === 0 && (
           <>
-            <Title>Введите имя</Title>
-            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder='Имя' />
-            <Button
-              onClick={() => setStep((prev) => prev + 1)}
-              text='Продолжить'
-              variant={ButtonVariant.Outline}
+            <Title>Введите имя и фразу</Title>
+            <Input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder='Имя'
             />
-          </>
-        )}
-        {step === 1 && (
-          <>
-            <Title>Выберите фразу или впишите свой вариант</Title>
-            <Select name={phrase} value={phrase} onChange={(e) => handleChange(e)}>
+            <Select
+              name={phrase.label}
+              defaultValue={phrase.value}
+              onChange={handleChange}
+            >
               {options.map((option) => (
                 <option
                   value={option.value}
@@ -125,28 +138,40 @@ export function Main() {
               ))}
             </Select>
             <Button
-              onClick={() => setStep((prev) => prev - 1)}
-              text='Назад'
-              variant={ButtonVariant.Outline}
-            />
-            <Button
-              onClick={() => setStep((prev) => prev + 1)}
+              onClick={() => {
+                setStep((prev) => prev + 1);
+                setPhrase(options[0]);
+              }}
               text='Свой вариант'
               variant={ButtonVariant.Outline}
             />
-            <Button onClick={handleSubmit} text='Отправить' variant={ButtonVariant.Outline} />
+            <Button
+              onClick={handleSubmit}
+              text='Отправить'
+              variant={ButtonVariant.Outline}
+              className={stylesSecondary}
+            />
           </>
         )}
-        {step === 2 && (
+        {step === 1 && (
           <>
             <Title>Ваша фраза</Title>
-            <ListItem time='00:00' ownPhrase={ownPhrase} onChange={handlePhraseChange} />
+            <ListItem
+              time='00:00'
+              ownPhrase={ownPhrase}
+              onChange={handlePhraseChange}
+            />
             <Button
               onClick={() => setStep((prev) => prev - 1)}
               text='Назад'
               variant={ButtonVariant.Outline}
             />
-            <Button onClick={handleSubmit} text='Отправить' variant={ButtonVariant.Outline} />
+            <Button
+              onClick={handleSubmit}
+              text='Отправить'
+              variant={ButtonVariant.Outline}
+              className={stylesSecondary}
+            />
           </>
         )}
       </Form>

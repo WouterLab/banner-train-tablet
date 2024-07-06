@@ -15,12 +15,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Letter = styled.div`
-  background-color: #66717f;
+  background-color: #58626e;
   min-width: 18px;
   width: 18px;
-  height: 24px;
+  height: 26px;
   position: relative;
-  background: conic-gradient(from 90deg at 2px 2px, #66717f 90deg, #0000 0) 2px 2px/4px 4px;
+  background: conic-gradient(from 90deg at 2px 2px, #58626e 90deg, #0000 0) 2px
+    2px/4px 4px;
 
   span {
     position: absolute;
