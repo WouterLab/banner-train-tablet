@@ -56,18 +56,20 @@ export function Main() {
     } else {
       data = { name, phrase: phrase.value };
     }
-    console.log(data);
 
-    // await fetch("https://dapanov.ru/api", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-    // setName("");
-    // setPhrase("");
-    // setStep(0);
+    await fetch("https://dapanov.ru/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    setName("");
+    setPhrase(options[0]);
+    setOwnPhrase(
+      "                                                                                                                               ",
+    );
+    setStep(0);
   };
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -141,6 +143,7 @@ export function Main() {
               onClick={() => {
                 setStep((prev) => prev + 1);
                 setPhrase(options[0]);
+                setName("");
               }}
               text='Свой вариант'
               variant={ButtonVariant.Outline}
