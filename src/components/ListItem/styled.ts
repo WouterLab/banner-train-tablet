@@ -8,16 +8,15 @@ export const Wrapper = styled.div`
   gap: 4px;
   width: 100%;
   flex-wrap: wrap;
-  width: 740px;
-  font-family: "5by7";
+  width: 800px;
   color: #fff;
   text-transform: uppercase;
 `;
 
 export const Letter = styled.div`
   background-color: #58626e;
-  min-width: 18px;
-  width: 18px;
+  min-width: 20px;
+  width: 20px;
   height: 26px;
   position: relative;
   background: conic-gradient(from 90deg at 2px 2px, #58626e 90deg, #0000 0) 2px
@@ -35,14 +34,18 @@ export const Letter = styled.div`
   }
 
   input {
-    font-size: 24px;
-    width: 18px;
-    text-align: center;
-    font-family: "5by7";
+    font-size: 18px;
+    width: 20px;
+    position: absolute;
+    left: -1px;
+    top: 1px;
     background-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
     text-transform: uppercase;
     color: #fff;
     outline: none;
+    text-align: center;
     border: none;
   }
 `;

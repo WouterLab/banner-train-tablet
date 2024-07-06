@@ -1,4 +1,10 @@
-import { Wrapper, Letter, stylesGreen, stylesWithMargin, stylesDisabled } from "./styled";
+import {
+  Wrapper,
+  Letter,
+  stylesGreen,
+  stylesWithMargin,
+  stylesDisabled,
+} from "./styled";
 
 type ListItemProps = {
   time: string;
@@ -23,7 +29,10 @@ export function ListItem({ time, ownPhrase, onChange }: ListItemProps) {
         >
           <input
             value={char}
-            onChange={(e) => onChange(e.target.value, index - 5)}
+            onChange={(e) => {
+              if (index < 5) return;
+              onChange(e.target.value, index - 5);
+            }}
             max={1}
             id={`input-${index - 5}`}
           />
