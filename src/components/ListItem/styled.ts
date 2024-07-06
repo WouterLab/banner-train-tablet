@@ -34,11 +34,11 @@ export const Letter = styled.div`
   }
 
   input {
-    font-size: 18px;
-    width: 20px;
+    font-size: 16px;
+    width: 30px !important;
     position: absolute;
-    left: -1px;
-    top: 1px;
+    left: -6px;
+    top: 0px;
     background-color: transparent;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
