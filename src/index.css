@@ -103,3 +103,11 @@ body,
   overflow: auto;
   background-color: #151c22;
 }
+
+@font-face {
+  font-family: "5by7";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/5by7.ttf") format("truetype");
+}

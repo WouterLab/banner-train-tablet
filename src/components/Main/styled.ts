@@ -10,11 +10,15 @@ export const Wrapper = styled.div`
 
 export const Form = styled.div`
   width: 100%;
-  max-width: 400px;
   display: flex;
   gap: 20px;
   flex-direction: column;
   margin: 0 auto;
+  align-items: center;
+
+  button {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h1`

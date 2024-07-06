@@ -1,5 +1,6 @@
 import { Button, ButtonVariant } from "#components/Button";
 import { Input } from "#components/Input";
+import { ListItem } from "#components/ListItem";
 import { Wrapper, Form, Title, Select } from "./styled";
 import { ChangeEvent, useEffect, useState } from "react";
 
@@ -31,10 +32,8 @@ const options = [
     value: "уже на высоте птичьего полета",
   },
   {
-    label:
-      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
-    value:
-      "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
+    label: "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
+    value: "отправляется в расколбасное путешествие рейсом VK fest – полный улёт",
   },
   { label: "держит курс на курочек", value: "держит курс на курочек" },
 ];
@@ -42,7 +41,10 @@ const options = [
 export function Main() {
   const [name, setName] = useState("");
   const [phrase, setPhrase] = useState(options[0].label);
-  const [step, setStep] = useState(0);
+  const [ownPhrase, setOwnPhrase] = useState(
+    "Your text here                   or on new line                                                                                ",
+  );
+  const [step, setStep] = useState(2);
 
   const handleSubmit = async () => {
     const data = { name, phrase };
@@ -67,17 +69,40 @@ export function Main() {
     setPhrase(options[0].label);
   }, []);
 
+  const replaceChar = (str: string, index: number, char: string) => {
+    const array = str.split("");
+    array[index] = char;
+    return array.join("");
+  };
+
+  const handlePhraseChange = (value: string, index: number) => {
+    const nextInput = document.getElementById(`input-${index + 1}`);
+
+    if (value === "") {
+      const newValue = replaceChar(ownPhrase, index, " ");
+      setOwnPhrase(newValue);
+      nextInput?.focus();
+      return;
+    }
+    if (value.startsWith(" ")) {
+      const newValue = replaceChar(ownPhrase, index, value.slice(1, 2));
+      setOwnPhrase(newValue);
+      nextInput?.focus();
+      return;
+    }
+    const newValue = replaceChar(ownPhrase, index, value.slice(0, 1));
+    setOwnPhrase(newValue);
+    nextInput?.focus();
+    return;
+  };
+
   return (
     <Wrapper>
       <Form>
         {step === 0 && (
           <>
             <Title>Введите имя</Title>
-            <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder='Имя'
-            />
+            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder='Имя' />
             <Button
               onClick={() => setStep((prev) => prev + 1)}
               text='Продолжить'
@@ -88,11 +113,7 @@ export function Main() {
         {step === 1 && (
           <>
             <Title>Выберите фразу или впишите свой вариант</Title>
-            <Select
-              name={phrase}
-              value={phrase}
-              onChange={(e) => handleChange(e)}
-            >
+            <Select name={phrase} value={phrase} onChange={(e) => handleChange(e)}>
               {options.map((option) => (
                 <option
                   value={option.value}
@@ -104,30 +125,28 @@ export function Main() {
               ))}
             </Select>
             <Button
+              onClick={() => setStep((prev) => prev - 1)}
+              text='Назад'
+              variant={ButtonVariant.Outline}
+            />
+            <Button
               onClick={() => setStep((prev) => prev + 1)}
               text='Свой вариант'
               variant={ButtonVariant.Outline}
             />
-            <Button
-              onClick={handleSubmit}
-              text='Отправить'
-              variant={ButtonVariant.Outline}
-            />
+            <Button onClick={handleSubmit} text='Отправить' variant={ButtonVariant.Outline} />
           </>
         )}
         {step === 2 && (
           <>
             <Title>Ваша фраза</Title>
-            <Input
-              value={phrase}
-              onChange={(e) => setPhrase(e.target.value)}
-              placeholder='Фраза'
-            />
+            <ListItem time='00:00' ownPhrase={ownPhrase} onChange={handlePhraseChange} />
             <Button
-              onClick={handleSubmit}
-              text='Отправить'
+              onClick={() => setStep((prev) => prev - 1)}
+              text='Назад'
               variant={ButtonVariant.Outline}
             />
+            <Button onClick={handleSubmit} text='Отправить' variant={ButtonVariant.Outline} />
           </>
         )}
       </Form>
