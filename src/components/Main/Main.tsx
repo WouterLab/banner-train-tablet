@@ -64,12 +64,12 @@ export function Main() {
       },
       body: JSON.stringify(data),
     });
-    setName("");
+
     setPhrase(options[0]);
     setOwnPhrase(
       "                                                                                                                               ",
     );
-    setStep(0);
+    setName("");
   };
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -126,7 +126,7 @@ export function Main() {
             />
             <Select
               name={phrase.label}
-              defaultValue={phrase.value}
+              value={phrase.value}
               onChange={handleChange}
             >
               {options.map((option) => (

@@ -40,5 +40,5 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
 
   /** Callback function triggered when the input value changes. */
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }

@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { InputProps, InputSize, InputVariant } from "./types";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import {
   Wrapper,
   bigStyles,
@@ -20,14 +20,8 @@ export function Input({
   placeholder,
   ...args
 }: InputProps) {
-  const [inputValue, setInputValue] = useState(value || "");
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-
-    if (onChange) {
-      onChange(e);
-    }
+    onChange(e);
   };
 
   const getSizeClassName = () => {
@@ -61,7 +55,7 @@ export function Input({
 
   return (
     <Wrapper
-      value={inputValue}
+      value={value}
       className={inputClass}
       disabled={disabled}
       onChange={handleChange}
