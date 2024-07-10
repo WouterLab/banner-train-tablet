@@ -44,7 +44,9 @@ const options = [
 export function Main() {
   const [name, setName] = useState("");
   const [phrase, setPhrase] = useState(options[0]);
-  const [ownPhrase, setOwnPhrase] = useState("");
+  const [ownPhrase, setOwnPhrase] = useState(
+    "                                                                                    ",
+  );
   const [step, setStep] = useState(0);
 
   const handleSubmit = async () => {
@@ -65,7 +67,7 @@ export function Main() {
 
     setPhrase(options[0]);
     setOwnPhrase(
-      "                                                                                                                               ",
+      "                                                                                    ",
     );
     setName("");
   };
