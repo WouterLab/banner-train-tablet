@@ -7,12 +7,14 @@ const { NEUTRAL } = COLORS;
 export const Wrapper = styled.input`
   transition: background-color 0.3s, opacity 0.3s, color 0.3s;
   ${TEXT3_STYLES};
+  font-family: "5by7";
   height: fit-content;
   color: ${NEUTRAL[0]};
   background-color: ${NEUTRAL[80]};
   border-radius: 8px;
   outline: none;
   border: none;
+  height: 62px;
 
   &:hover {
     background-color: ${NEUTRAL[80]};
@@ -34,16 +36,20 @@ export const Wrapper = styled.input`
 
 export const smallStyles = css`
   ${TEXT4_STYLES};
+  font-family: "5by7";
   padding: 6px 10px;
 `;
 
 export const mediumStyles = css`
   ${TEXT3_STYLES};
+  font-family: "5by7";
+  font-size: 28px;
   padding: 10px 16px;
 `;
 
 export const bigStyles = css`
   ${TEXT1_STYLES};
+  font-family: "5by7";
   padding: 14px 24px;
 `;
 

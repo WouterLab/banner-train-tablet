@@ -13,6 +13,7 @@ export const Wrapper = styled.button`
   background-color: ${NEUTRAL[80]};
   border-radius: 8px;
   border: none;
+  height: 62px;
 
   &:hover {
     background-color: ${NEUTRAL[90]};
@@ -25,16 +26,20 @@ export const Wrapper = styled.button`
 
 export const smallStyles = css`
   ${TEXT3_STYLES};
+  font-family: "5by7";
   padding: 6px 30px;
 `;
 
 export const mediumStyles = css`
   ${TEXT2_STYLES};
+  font-family: "5by7";
+  font-size: 28px;
   padding: 10px 30px;
 `;
 
 export const bigStyles = css`
   ${TEXT1_STYLES};
+  font-family: "5by7";
   padding: 14px 30px;
 `;
 

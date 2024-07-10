@@ -16,7 +16,7 @@ export function ListItem({ time, ownPhrase, onChange }: ListItemProps) {
   const greenIndexes = [0, 1, 3, 4];
   const indexesWithMargin = [4, 37, 70, 103];
   const disabledIndexes = [0, 1, 2, 3, 4];
-  const fullText = (time + ownPhrase).padEnd(132, " ");
+  const fullText = (time + ownPhrase).padEnd(99, " ");
 
   return (
     <Wrapper>

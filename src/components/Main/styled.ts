@@ -38,6 +38,8 @@ export const Form = styled.div`
 
 export const Title = styled.h1`
   ${H4_STYLES};
+  font-family: "5by7";
+  font-size: 28px;
   color: #fff;
 `;
 
@@ -70,6 +72,9 @@ export const Select = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   text-overflow: ellipsis;
+  font-family: "5by7";
+  font-size: 28px;
+  height: 62px;
 
   &:hover {
     background-color: transparent;

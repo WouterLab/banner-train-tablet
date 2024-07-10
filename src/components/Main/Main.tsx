@@ -44,9 +44,7 @@ const options = [
 export function Main() {
   const [name, setName] = useState("");
   const [phrase, setPhrase] = useState(options[0]);
-  const [ownPhrase, setOwnPhrase] = useState(
-    "Дмитрий отлетает                 классно и колбасно                                                                            ",
-  );
+  const [ownPhrase, setOwnPhrase] = useState("");
   const [step, setStep] = useState(0);
 
   const handleSubmit = async () => {
@@ -145,7 +143,7 @@ export function Main() {
                 setPhrase(options[0]);
                 setName("");
               }}
-              text='Свой вариант'
+              text='Свой вариант >'
               variant={ButtonVariant.Outline}
             />
             <Button
