@@ -121,7 +121,11 @@ export function Main() {
             <Title>Введите имя и фразу</Title>
             <Input
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                if (name.length > 27) return;
+
+                setName(e.target.value);
+              }}
               placeholder='Имя'
             />
             <Select
