@@ -122,7 +122,7 @@ export function Main() {
             <Input
               value={name}
               onChange={(e) => {
-                if (name.length > 27) return;
+                if (e.target.value.length > 28) return;
 
                 setName(e.target.value);
               }}
