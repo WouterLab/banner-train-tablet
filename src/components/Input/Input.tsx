@@ -18,6 +18,7 @@ export function Input({
   disabled,
   onChange,
   placeholder,
+  type,
   ...args
 }: InputProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +61,7 @@ export function Input({
       disabled={disabled}
       onChange={handleChange}
       placeholder={placeholder}
+      type={type}
       {...args}
     />
   );

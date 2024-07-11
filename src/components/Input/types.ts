@@ -41,4 +41,6 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
 
   /** Callback function triggered when the input value changes. */
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+
+  type: string;
 }
